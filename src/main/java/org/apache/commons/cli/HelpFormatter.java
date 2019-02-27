@@ -30,6 +30,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
+import org.checkerframework.checker.index.qual.*;
+
 /**
  * A formatter of help messages for command line options.
  *
@@ -76,10 +78,10 @@ public class HelpFormatter
     public static final int DEFAULT_WIDTH = 74;
 
     /** default padding to the left of each line */
-    public static final int DEFAULT_LEFT_PAD = 1;
+    public static final @NonNegative int DEFAULT_LEFT_PAD = 1;
 
     /** number of space characters to be prefixed to each description line */
-    public static final int DEFAULT_DESC_PAD = 3;
+    public static final @NonNegative int DEFAULT_DESC_PAD = 3;
 
     /** the string to display at the beginning of the usage statement */
     public static final String DEFAULT_SYNTAX_PREFIX = "usage: ";
@@ -118,7 +120,7 @@ public class HelpFormatter
      * - use get/setLeftPadding methods instead.
      */
     @Deprecated
-    public int defaultLeftPad = DEFAULT_LEFT_PAD;
+    public @NonNegative int defaultLeftPad = DEFAULT_LEFT_PAD;
 
     /**
      * the number of characters of padding to be prefixed
@@ -128,7 +130,7 @@ public class HelpFormatter
      * - use get/setDescPadding methods instead.
      */
     @Deprecated
-    public int defaultDescPad = DEFAULT_DESC_PAD;
+    public @NonNegative int defaultDescPad = DEFAULT_DESC_PAD;
 
     /**
      * the string to display at the beginning of the usage statement
@@ -210,7 +212,7 @@ public class HelpFormatter
      *
      * @param padding the new value of 'leftPadding'
      */
-    public void setLeftPadding(final int padding)
+    public void setLeftPadding(final @NonNegative int padding) // padding can't be negative as it is used as a parameter in printHelp
     {
         this.defaultLeftPad = padding;
     }
@@ -220,7 +222,7 @@ public class HelpFormatter
      *
      * @return the 'leftPadding'
      */
-    public int getLeftPadding()
+    public @NonNegative int getLeftPadding() // can't be negative as it is used as a parameter in printHelp, which will be used to define length
     {
         return defaultLeftPad;
     }
@@ -230,7 +232,7 @@ public class HelpFormatter
      *
      * @param padding the new value of 'descPadding'
      */
-    public void setDescPadding(final int padding)
+    public void setDescPadding(final @NonNegative int padding)  // padding can't be negative as it is used as a parameter in printHelp
     {
         this.defaultDescPad = padding;
     }
@@ -240,7 +242,7 @@ public class HelpFormatter
      *
      * @return the 'descPadding'
      */
-    public int getDescPadding()
+    public @NonNegative int getDescPadding() // can't be negative as it is used as a parameter in printHelp, which will be used to define length
     {
         return defaultDescPad;
     }
@@ -509,8 +511,8 @@ public class HelpFormatter
      * @throws IllegalStateException if there is no room to print a line
      */
     public void printHelp(final PrintWriter pw, final int width, final String cmdLineSyntax, 
-                          final String header, final Options options, final int leftPad, 
-                          final int descPad, final String footer)
+                          final String header, final Options options, final @NonNegative int leftPad, 
+                          final @NonNegative int descPad, final String footer)
     {
         printHelp(pw, width, cmdLineSyntax, header, options, leftPad, descPad, footer, false);
     }
@@ -536,9 +538,9 @@ public class HelpFormatter
      * @throws IllegalStateException if there is no room to print a line
      */
     public void printHelp(final PrintWriter pw, final int width, final String cmdLineSyntax,
-                          final String header, final Options options, final int leftPad,
-                          final int descPad, final String footer, final boolean autoUsage)
-    {
+                          final String header, final Options options, final @NonNegative int leftPad,
+                          final @NonNegative int descPad, final String footer, final boolean autoUsage)
+    {   //leftPad and descPad are NonNegative, refer to the function printOptions
         if (cmdLineSyntax == null || cmdLineSyntax.length() == 0)
         {
             throw new IllegalArgumentException("cmdLineSyntax not provided");
@@ -734,8 +736,8 @@ public class HelpFormatter
      * to each description line
      */
     public void printOptions(final PrintWriter pw, final int width, final Options options, 
-                             final int leftPad, final int descPad)
-    {
+                             final @NonNegative int leftPad, final @NonNegative int descPad)
+    {  //leftPad and descPad are NonNegative, refer to the function renderOptions and then refer to the function createPadding
         final StringBuffer sb = new StringBuffer();
 
         renderOptions(sb, width, options, leftPad, descPad);
@@ -786,8 +788,8 @@ public class HelpFormatter
      *
      * @return the StringBuffer with the rendered Options contents.
      */
-    protected StringBuffer renderOptions(final StringBuffer sb, final int width, final Options options, final int leftPad, final int descPad)
-    {
+    protected StringBuffer renderOptions(final StringBuffer sb, final int width, final Options options, final @NonNegative int leftPad, final @NonNegative int descPad)
+    {  // leftPad and descPad are NonNegative, refer to the function createPadding
         final String lpad = createPadding(leftPad);
         final String dpad = createPadding(descPad);
 
@@ -885,6 +887,7 @@ public class HelpFormatter
      *
      * @return the StringBuffer with the rendered Options contents.
      */
+    @SuppressWarnings("index") // pos will never be negative when invoked in substring 
     protected StringBuffer renderWrappedText(final StringBuffer sb, final int width, 
                                              int nextLineTabStop, String text)
     {
@@ -909,7 +912,6 @@ public class HelpFormatter
 
         while (true)
         {
-            text = padding + text.substring(pos).trim();
             pos = findWrapPos(text, width, 0);
 
             if (pos == -1)
@@ -918,6 +920,8 @@ public class HelpFormatter
 
                 return sb;
             }
+
+            text = padding + text.substring(pos).trim();
 
             if (text.length() > width && pos == nextLineTabStop - 1)
             {
@@ -979,7 +983,10 @@ public class HelpFormatter
      * @return position on which the text must be wrapped or -1 if the wrap
      * position is at the end of the text
      */
-    protected int findWrapPos(final String text, final int width, final int startPos)
+    @SuppressWarnings("index") /* pos < text.length() always because of the previous if (startPos + width >= text.length()) statement
+        and pos is running from startPos + width to startPos(which is Non Negative)
+        */
+    protected int findWrapPos(final String text, final int width, final @NonNegative int startPos) // pos >= startPos in loop
     {
         // the line ends before the max wrap pos or a new line char found
         int pos = text.indexOf('\n', startPos);
@@ -1028,7 +1035,7 @@ public class HelpFormatter
      *
      * @return The String of padding
      */
-    protected String createPadding(final int len)
+    protected String createPadding(final @NonNegative int len) // as len is used to define length of an array
     {
         final char[] padding = new char[len];
         Arrays.fill(padding, ' ');

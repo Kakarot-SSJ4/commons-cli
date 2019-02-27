@@ -1,0 +1,37 @@
+commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:
+if (pos == -1)
+        {
+            sb.append(rtrim(text));
+
+            return sb;
+        }
+        sb.append(rtrim(text.substring(0, pos))).append(getNewLine());
+
+If the program reaches the last line, pos will not be negative but the index checker suggests otherwise:
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+
+------------------
+
+commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:
+Line 190:
+return (values == null) ? null : values[0];
+The above statement will not fail as it checks for nullness of the array before accessing its first element.
+But the checker issues an error:
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+
+---------------------
+
+commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:
+if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))
+                    {
+                        // the format is --foo=value or -foo=value
+                        tokens.add(arg.substring(0, arg.indexOf('='))); // --foo
+                        tokens.add(arg.substring(arg.indexOf('=') + 1)); // value
+                    }
+Here, it is made sure in the if statement that arg.indexOf("=") is not -1, but still checker gives an error:
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int

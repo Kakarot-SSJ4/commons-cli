@@ -22,6 +22,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
+import org.checkerframework.checker.index.qual.*;
 /**
  * Default parser.
  *
@@ -473,6 +474,7 @@ public class DefaultParser implements CommandLineParser
      *
      * @param token the command line token to handle
      */
+    @SuppressWarnings("index") // when this function is called, pos will not be -1, as is checked by the if statement in handleShortAndLongOption(final String token)
     private void handleLongOptionWithEqual(final String token) throws ParseException
     {
         final int pos = token.indexOf('=');
@@ -527,6 +529,20 @@ public class DefaultParser implements CommandLineParser
      *
      * @param token the command line token to handle
      */
+    @SuppressWarnings("index") /*
+    currentOption.addValueForProcessing(t.substring(opt.length())); opt's length is always less than or equal to t
+     handleOption(options.getOption(t.substring(0, 1)));  t is not null(because isJavaProperty(t) is true), hence 
+                    substring(0,1) is valid
+                    
+    currentOption.addValueForProcessing(t.substring(1));  t has greater than or equal to 2 characters because isJavaProperty(t)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from t, and is true only when
+                    number is greater than or equal to twp.
+    handleOption(options.getOption(opt.substring(0, 1))); opt is not null(because isJavaProperty(opt) is true), hence 
+                    substring(0,1) is valid
+    currentOption.addValueForProcessing(opt.substring(1));/* opt has greater than or equal to 2 characters because isJavaProperty(opt)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from opt, and is true only when
+                    number is greater than or equal to two.
+    */
     private void handleShortAndLongOption(final String token) throws ParseException
     {
         final String t = Util.stripLeadingHyphens(token);
@@ -561,18 +577,22 @@ public class DefaultParser implements CommandLineParser
             {
                 // look for a long prefix (-Xmx512m)
                 final String opt = getLongPrefix(t);
-
                 if (opt != null && options.getOption(opt).acceptsArg())
                 {
                     handleOption(options.getOption(opt));
-                    currentOption.addValueForProcessing(t.substring(opt.length()));
+                    currentOption.addValueForProcessing(t.substring(opt.length())); // opt's length is always less than or equal to t
                     currentOption = null;
                 }
                 else if (isJavaProperty(t))
                 {
                     // -SV1 (-Dflag)
-                    handleOption(options.getOption(t.substring(0, 1)));
-                    currentOption.addValueForProcessing(t.substring(1));
+                    handleOption(options.getOption(t.substring(0, 1))); /* t is not null(because isJavaProperty(t) is true), hence 
+                    substring(0,1) is valid
+                    */
+                    currentOption.addValueForProcessing(t.substring(1)); /* t has greater than or equal to 2 characters because isJavaProperty(t)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from t, and is true only when
+                    number is greater than or equal to two.
+                   */
                     currentOption = null;
                 }
                 else
@@ -606,8 +626,13 @@ public class DefaultParser implements CommandLineParser
             else if (isJavaProperty(opt))
             {
                 // -SV1=V2 (-Dkey=value)
-                handleOption(options.getOption(opt.substring(0, 1)));
-                currentOption.addValueForProcessing(opt.substring(1));
+                handleOption(options.getOption(opt.substring(0, 1))); /* opt is not null(because isJavaProperty(opt) is true), hence 
+                    substring(0,1) is valid
+                    */
+                currentOption.addValueForProcessing(opt.substring(1));/* opt has greater than or equal to 2 characters because isJavaProperty(opt)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from opt, and is true only when
+                    number is greater than or equal to two.
+                   */
                 currentOption.addValueForProcessing(value);
                 currentOption = null;
             }
@@ -647,8 +672,7 @@ public class DefaultParser implements CommandLineParser
      * Check if the specified token is a Java-like property (-Dkey=value).
      */
     private boolean isJavaProperty(final String token)
-    {
-        final String opt = token.substring(0, 1);
+    {   final String opt = token.length()<1?null:token.substring(0, 1);
         final Option option = options.getOption(opt);
 
         return option != null && (option.getArgs() >= 2 || option.getArgs() == Option.UNLIMITED_VALUES);

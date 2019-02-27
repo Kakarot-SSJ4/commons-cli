@@ -20,6 +20,9 @@ package org.apache.commons.cli;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.checkerframework.checker.index.qual.*;
+import org.checkerframework.common.value.qual.*;
+
 /**
  * The class GnuParser provides an implementation of the
  * {@link Parser#flatten(Options, String[], boolean) flatten} method.
@@ -47,6 +50,19 @@ public class GnuParser extends Parser
      * @return a String array of the flattened arguments
      */
     @Override
+    @SuppressWarnings("index") /* 
+    if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))
+                    {
+                        tokens.add(arg.substring(0, arg.indexOf('='))); // arg.indexOf('=') will not be -1 as checked in the if statement
+                        tokens.add(arg.substring(arg.indexOf('=') + 1));
+                    }
+     else if (options.hasOption(arg.length()<=2?null:arg.substring(0, 2))) 
+                    {   // The statements below will never give IndexOutOfBoundsException if length > 2
+                        tokens.add(arg.substring(0, 2));
+                        tokens.add(arg.substring(2));
+                    }
+    
+    */
     protected String[] flatten(final Options options, final String[] arguments, final boolean stopAtNonOption)
     {
         final List<String> tokens = new ArrayList<String>();
@@ -79,11 +95,12 @@ public class GnuParser extends Parser
                     if (opt.indexOf('=') != -1 && options.hasOption(opt.substring(0, opt.indexOf('='))))
                     {
                         // the format is --foo=value or -foo=value
+                        // the statement below will be valid as arg will not be -1 as checked in the if statement
                         tokens.add(arg.substring(0, arg.indexOf('='))); // --foo
                         tokens.add(arg.substring(arg.indexOf('=') + 1)); // value
                     }
-                    else if (options.hasOption(arg.substring(0, 2)))
-                    {
+                    else if (options.hasOption(arg.length()<=2?null:arg.substring(0, 2)))
+                    {   // The statements below will never give IndexOutOfBoundsException if length > 2
                         // the format is a special properties option (-Dproperty=value)
                         tokens.add(arg.substring(0, 2)); // -D
                         tokens.add(arg.substring(2)); // property=value

@@ -162,6 +162,9 @@ public class Option implements Cloneable, Serializable
      *
      * @return the id of this Option
      */
+    @SuppressWarnings("index") /* charAt(0) will fail only when opt and longOpt both be null(refer to getKey()), the case which is handled
+    by public Option build()
+    */
     public int getId()
     {
         return getKey().charAt(0);

@@ -1,0 +1,712 @@
+mvn compile:
+[INFO] 18 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  57.298 s
+[INFO] Finished at: 2019-02-24T20:59:06+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[899,43] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[912,45] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[927,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[1005,40] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[1033,41] [array.length.negative] Variable used in array creation could be negative.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: an integer >= 0 (@NonNegative or @Positive)
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.en is null, token.subtring(0,1) can't be executed, but this issue would 
+    be resolved better by nullness check
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+-----------------------------------
+
+Moved 'text = padding + text.substring(pos).trim();' below the if(pos==-1) block to ensure that pos is not -1 in substring then suppressing the error.
+mvn compile:
+[INFO] 15 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:00 min
+[INFO] Finished at: 2019-02-25T02:34:25+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[1009,40] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[1037,41] [array.length.negative] Variable used in array creation could be negative.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: an integer >= 0 (@NonNegative or @Positive)
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+--------------------------------------
+
+Annotating startPos as NonNegative and suppressing warning for possible out of bounds value of final char c = text.charAt(pos);
+mvn compile:
+[INFO] 14 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  59.646 s
+[INFO] Finished at: 2019-02-25T02:57:57+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[1040,18] [array.length.negative] Variable used in array creation could be negative.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: an integer >= 0 (@NonNegative or @Positive)
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+-------------------------------
+
+Annotating len as NonNegative
+mvn compile:
+[INFO] 15 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.080 s
+[INFO] Finished at: 2019-02-25T03:01:20+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[793,43] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[794,43] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+-------------------------
+
+Annotating leftPad and descPad as NonNegative.
+mvn compile:
+[INFO] 15 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.097 s
+[INFO] Finished at: 2019-02-25T03:06:18+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[743,43] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[743,52] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+--------------
+
+Annotating leftPad and descPad as NonNegative in printOptions and in both the printHelp functions' parameters.
+mvn compile:
+[INFO] 15 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  59.440 s
+[INFO] Finished at: 2019-02-25T03:17:48+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[492,76] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/HelpFormatter.java:[492,94] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LowerBoundUnknown int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+--------------------------
+
+Annotating all the getter and setter functions of padding as non negative, and also the related public variables defaultLeftPad and defaultDescPad, DEFAULT_LEFT_PAD and DEFAULT_DESC_PAD.
+mvn compile:
+[INFO] 13 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  56.795 s
+[INFO] Finished at: 2019-02-25T03:35:55+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/Option.java:[167,32] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTLengthOf(value="this.getKey()", offset={}) int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+----------
+
+Suppressing warning in Option.java as the case in which getKey() is null is handled in public Option build().
+mvn compile: 
+[INFO] 12 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:26 min
+[INFO] Finished at: 2019-02-25T14:57:21+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/CommandLine.java:[190,49] [array.access.unsafe.high.constant] Potentially unsafe array access: the constant index 0 could be larger than the array's bound
+[ERROR]   found   : @UnknownVal String @UnknownVal []
+[ERROR]   required: @MinLen("1") -- an array guaranteed to have at least 1 elements
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+-----------------------
+
+Suppressing warnings in CommandLine.java as values[0] will not be out of bounds if checked for nullness.
+mvn compile :
+[INFO] 11 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:15 min
+[INFO] Finished at: 2019-02-25T15:07:18+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[482,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[568,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[574,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[575,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[609,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[610,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[651,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+----------------------
+
+Suppressing warning in DefaultParser.java because pos will not be -1 where it suggests due to the series of if statements before it is invoked.
+mvn compile:
+[INFO] 10 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  58.029 s
+[INFO] Finished at: 2019-02-25T15:52:44+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[571,79] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @LTEqLengthOf("opt") int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[577,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[578,69] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("t") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[612,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[613,67] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("opt") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[654,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+--------------------------
+
+Suppressing warnings in DefaultParser.java in handleShortAndLongOption() for the following reasons:
+currentOption.addValueForProcessing(t.substring(opt.length())); opt's length is always less than or equal to t
+     handleOption(options.getOption(t.substring(0, 1)));  t is not null(because isJavaProperty(t) is true), hence 
+                    substring(0,1) is valid
+                    
+    currentOption.addValueForProcessing(t.substring(1));  t has greater than or equal to 2 characters because isJavaProperty(t)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from t, and is true only when
+                    number is greater than or equal to twp.
+    handleOption(options.getOption(opt.substring(0, 1))); opt is not null(because isJavaProperty(opt) is true), hence 
+                    substring(0,1) is valid
+    currentOption.addValueForProcessing(opt.substring(1));/* opt has greater than or equal to 2 characters because isJavaProperty(opt)
+                    is true, which checks for number of arguments(Option.getArgs()) that can be attained obtained from opt, and is true only when
+                    number is greater than or equal to two.
+mvn compile:
+[INFO] 5 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:23 min
+[INFO] Finished at: 2019-02-27T02:23:52+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/DefaultParser.java:[674,47] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("token") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[82,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[85,65] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[88,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+---------------
+
+Checking if the parameter token is null.
+mvn compile:
+[INFO] 4 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:04 min
+[INFO] Finished at: 2019-02-27T22:56:40+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.6.1:compile (default-compile) on project commons-cli: Compilation failure: Compilation failure: 
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[86,64] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @GTENegativeOne int
+[ERROR]   required: @NonNegative int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[89,90] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[92,53] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] /home/kakarot/commons-cli/src/main/java/org/apache/commons/cli/GnuParser.java:[93,50] [argument.type.incompatible] incompatible types in argument.
+[ERROR]   found   : @UpperBoundUnknown int
+[ERROR]   required: @LTEqLengthOf("arg") int
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+-------------------------
+
+mvn compile:
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  57.423 s
+[INFO] Finished at: 2019-02-27T23:03:26+05:30
+[INFO] ------------------------------------------------------------------------
+

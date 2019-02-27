@@ -180,6 +180,7 @@ public class CommandLine implements Serializable
      * otherwise null.
      * @since 1.5
      */
+    @SuppressWarnings("index") // values[0] if at all accessed will never be out of bounds as it checks for nullness first
     public String getOptionValue(final Option option)
     {
         if (option == null)
