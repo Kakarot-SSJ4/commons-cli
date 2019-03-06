@@ -56,12 +56,11 @@ public class GnuParser extends Parser
                         tokens.add(arg.substring(0, arg.indexOf('='))); // arg.indexOf('=') will not be -1 as checked in the if statement
                         tokens.add(arg.substring(arg.indexOf('=') + 1));
                     }
-     else if (options.hasOption(arg.length()<=2?null:arg.substring(0, 2))) 
-                    {   // The statements below will never give IndexOutOfBoundsException if length > 2
-                        tokens.add(arg.substring(0, 2));
-                        tokens.add(arg.substring(2));
+     else if (options.hasOption(arg.substring(0, 2)))  the format is a special properties option (-Dproperty=value) => arg.substring(0,2)!=null
+                    {   // the format is a special properties option (-Dproperty=value)
+                        tokens.add(arg.substring(0, 2)); // -D
+                        tokens.add(arg.substring(2)); // property=value
                     }
-    
     */
     protected String[] flatten(final Options options, final String[] arguments, final boolean stopAtNonOption)
     {
@@ -99,9 +98,8 @@ public class GnuParser extends Parser
                         tokens.add(arg.substring(0, arg.indexOf('='))); // --foo
                         tokens.add(arg.substring(arg.indexOf('=') + 1)); // value
                     }
-                    else if (options.hasOption(arg.length()<=2?null:arg.substring(0, 2)))
-                    {   // The statements below will never give IndexOutOfBoundsException if length > 2
-                        // the format is a special properties option (-Dproperty=value)
+                    else if (options.hasOption(arg.substring(0, 2)))
+                    {   // the format is a special properties option (-Dproperty=value)
                         tokens.add(arg.substring(0, 2)); // -D
                         tokens.add(arg.substring(2)); // property=value
                     }

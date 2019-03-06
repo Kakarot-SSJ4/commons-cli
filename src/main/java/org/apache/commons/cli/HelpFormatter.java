@@ -983,13 +983,13 @@ public class HelpFormatter
      * @return position on which the text must be wrapped or -1 if the wrap
      * position is at the end of the text
      */
-    @SuppressWarnings("index") /* pos < text.length() always because of the previous if (startPos + width >= text.length()) statement
-        and pos is running from startPos + width to startPos(which is Non Negative)
-        */
+  
     protected int findWrapPos(final String text, final int width, final @NonNegative int startPos) // pos >= startPos in loop
     {
         // the line ends before the max wrap pos or a new line char found
-        int pos = text.indexOf('\n', startPos);
+       @SuppressWarnings("index") int pos = text.indexOf('\n', startPos); /* pos < text.length() always because of the previous if (startPos + width >= text.length()) statement
+        and pos is running from startPos + width to startPos(which is Non Negative)
+        */
         if (pos != -1 && pos <= width)
         {
             return pos + 1;
